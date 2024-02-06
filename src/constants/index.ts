@@ -16,3 +16,20 @@ export const mockData = [
 ];
 export const postPath = '/posts/1';
 export const baseURL = 'https://jsonplaceholder.typicode.com';
+export const elements = [1, 2, 3, 4];
+export const expectedLinkedList = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: {
+          value: null,
+          next: null,
+        },
+      },
+    },
+  },
+};
