@@ -3,10 +3,12 @@ import { generateLinkedList } from './index';
 
 describe('generateLinkedList', () => {
   test('should generate linked list from values 1', () => {
-    expect(generateLinkedList(elements)).toStrictEqual(expectedLinkedList);
+    const linkedList = generateLinkedList(elements);
+    expect(linkedList).toStrictEqual(expectedLinkedList);
   });
 
   test('should generate linked list from values 2', () => {
-    expect(generateLinkedList(elements)).toStrictEqual(expectedLinkedList);
+    const linkedList = generateLinkedList(elements);
+    expect(linkedList).toMatchSnapshot();
   });
 });

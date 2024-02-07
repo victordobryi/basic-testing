@@ -18,10 +18,6 @@ describe('partial mocking', () => {
     logSpy = jest.spyOn(console, 'log');
   });
 
-  afterEach(() => {
-    logSpy.mockRestore();
-  });
-
   afterAll(() => {
     jest.unmock('./index');
   });
@@ -39,6 +35,6 @@ describe('partial mocking', () => {
 
   test('unmockedFunction should log into console', () => {
     unmockedFunction();
-    expect(logSpy).toHaveBeenCalledWith('I am not mocked');
+    expect(logSpy).toBeCalledWith('I am not mocked');
   });
 });

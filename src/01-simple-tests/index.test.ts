@@ -1,5 +1,5 @@
 import { simpleCalculator, Action } from './index';
-import { a, b } from '../constants';
+import { INVALID_VALUE, a, b } from '../constants';
 
 describe('simpleCalculator tests', () => {
   test('should add two numbers', () => {
@@ -29,12 +29,15 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should return null for invalid action', () => {
-    expect(simpleCalculator({ a, b, action: 'invalid' })).toBe(null);
+    expect(simpleCalculator({ a, b, action: INVALID_VALUE })).toBe(null);
   });
 
   test('should return null for invalid arguments', () => {
     expect(
-      simpleCalculator({ a: 'ivalid', b: 'ivalid', action: 'invalid' }),
+      simpleCalculator({ a: INVALID_VALUE, b, action: Action.Divide }),
+    ).toBe(null);
+    expect(
+      simpleCalculator({ a, b: INVALID_VALUE, action: Action.Divide }),
     ).toBe(null);
   });
 });
