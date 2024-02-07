@@ -1,17 +1,23 @@
-// Uncomment the code below and write your tests
-/* import {  simpleCalculator, Action } from './index';
+import { simpleCalculator, Action } from './index';
+import { INVALID_VALUE, a, b } from '../constants';
 
 const testCases = [
-    { a: 1, b: 2, action: Action.Add, expected: 3 },
-    { a: 2, b: 2, action: Action.Add, expected: 4 },
-    { a: 3, b: 2, action: Action.Add, expected: 5 },
-    // continue cases for other actions    
-]; */
+  { a, b, action: Action.Add, expected: 3 },
+  { a, b, action: Action.Subtract, expected: -1 },
+  { a, b, action: Action.Multiply, expected: 2 },
+  { a, b, action: Action.Divide, expected: 0.5 },
+  { a, b, action: Action.Exponentiate, expected: 1 },
+  { a, b, action: INVALID_VALUE, expected: null },
+  { a: INVALID_VALUE, b, action: Action.Divide, expected: null },
+  { a, b: INVALID_VALUE, action: Action.Divide, expected: null },
+];
 
 describe('simpleCalculator', () => {
-  // This test case is just to run this test suite, remove it when you write your own tests
-  test('should blah-blah', () => {
-    expect(true).toBe(true);
-  });
-  // Consider to use Jest table tests API to test all cases above
+  test.each(testCases)(
+    'should correctly $action the result of $a, $b and return $expected',
+    ({ a, b, action, expected }) => {
+      const result = simpleCalculator({ a, b, action });
+      expect(result).toBe(expected);
+    },
+  );
 });
